@@ -1,0 +1,64 @@
+﻿@addTagHelper *, LazZiya.TagHelpers
+@using Listen_Music.Application.Services.Songs.Queries.GetSongForSite
+@model ResultSongForSiteDTO
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    //int pageNumber = 1;
+    //int pageSize = 12;
+    //int.TryParse(Context.Request.Query["pageNumber"], out pageNumber);
+    //int.TryParse(Context.Request.Query["pageSize"], out pageSize);
+}
+
+<section id="info-page">
+    <h4>جدید ترین ها</h4>
+</section>
+<section id="main-content">
+    @foreach (var item in Model.Sogs)
+    {
+        <a class="song-items-container" href="~/Song/Index/@item.Id" title="جزئیات موزیک">
+            <div class="song-img">
+                <img src="~/@item.ImageSrc" alt="song image">
+            </div>
+            <div class="info-contaier">
+                <h3 class="singer-name">@item.ArtistName</h3>
+                <h4 class="song-name">@item.Title</h4>
+            </div>
+        </a>
+    }
+
+
+</section>
+
+<div class="pagination">
+    @*<paging total-records="@Model.TotalRow"
+                page-no="@pageNumber"
+                page-size="@pageSize==0?12:pageSize"
+                show-prev-next="true"
+                show-total-pages="false"
+                show-total-records="false"
+                show-page-size-nav="false"
+                show-first-numbered-page="true"
+                show-last-numbered-page="true"
+                query-string-key-page-no="page"
+                query-string-key-page-size="pageSize"
+                query-string-value="@(Context.Request.QueryString.Value)">
+        </paging>*@
+
+    <paging total-records="Model.TotalRow"
+            page-no="Model.Page"
+            page-size="Model.PageSize"
+            show-prev-next="true"
+            show-total-pages="false"
+            show-total-records="false"
+            show-page-size-nav="false"
+            query-string-key-page-no="Page"
+            query-string-key-page-size="PageSize">
+    </paging>
+</div>
+
+
+
+
+
+

@@ -1,0 +1,20 @@
+﻿@using Listen_Music.Application.Services.Songs.Queries.GetMostView;
+@model List<RequestGetMostViewDTO>;
+@{
+    Layout = null;
+}
+
+@foreach (var item in Model)
+{
+    <div class="mostView-Item">
+        <img src="~/@item.ImageSrc" class="tiny-singer-img" alt="">
+        <div class="tiny-info">
+            <p>@item.SingerName</p>
+            <p>@item.SongName</p>
+            <p><i class="fa fa-eye"></i>  @item.Views </p>
+        </div>
+        <div class="link-to-play-con">
+            <a class="link-to-play" href="~/Song/Index/@item.SongId" title="پخش"><i class="fa fa-play"></i></a>
+        </div>
+    </div>
+}

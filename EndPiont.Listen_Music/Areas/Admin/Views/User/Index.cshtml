@@ -1,0 +1,194 @@
+﻿@addTagHelper *, LazZiya.TagHelpers
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@using Listen_Music.Application.Services.Users.Queries.GetUser;
+@model ResultGetUserDTO
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div id="user-list-container" class="singer-genre-list-contaier">
+    <h1>لیست  کاربران</h1>
+    <form id="user-form-search" asp-route="~/Admin/User/Index">
+        <input type="text" name="SearchKey" id="user-search" class="search-entity">
+        <button type="submit" id="user-button-search" class="btn-search">جستجو</button>
+    </form>
+    <table id="user-list" class="table-genre-singer">
+
+        <tr>
+            <td>نام کاربری</td>
+            <td>ایمیل</td>
+            <td>نقش</td>
+            <td>اعمال</td>
+        </tr>
+
+        @foreach (var item in Model.Users)
+        {
+            <tr>
+                <td>@item.UserName</td>
+                <td>@item.Email</td>
+                <td>@item.RoleName</td>
+                <td>
+                    <button class="edit" onclick="ModalEditUser('@item.Id', '@item.UserName', '@item.Email')">ویرایش</button>
+                    <button class="delete" onclick="DeleteUser('@item.Id')">حذف</button>
+                </td>
+            </tr>
+        }
+
+    </table>
+    <div class="pagination">
+        <paging total-records="Model.RowCount"
+                page-no="Model.CurrentPage"
+                page-size="Model.PageSize"
+                show-prev-next="true"
+                show-total-pages="false"
+                show-total-records="false"
+                show-page-size-nav="false"
+                query-string-key-page-no="Page"
+                query-string-key-page-size="PageSize">
+        </paging>
+    </div>
+</div>
+
+@section Scripts{
+
+    <link href="~/Sweetalert2/sweetalert2.min.css" rel="stylesheet" />
+    <script src="~/Sweetalert2/sweetalert2.min.js"></script>
+
+    <script>
+        function DeleteUser(UserId) {
+            swal.fire({
+                title: ' حذف کاربر',
+                text: "آیا میخواهید   کاربر را حذف کنید؟",
+                icon: 'info',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'بله  کاربر حذف شود',
+                cancelButtonText: 'خیر'
+            }).then((result) => {
+                if (result.value) {
+                    var postData = {
+                        'UserId': UserId
+                    };
+                    $.ajax({
+                        contentType: 'application/x-www-form-urlencoded',
+                        dataType: 'json',
+                        type: "POST",
+                        url: "Delete",
+                        data: postData,
+                        success: function (data) {
+                            if (data.isSuccess == true) {
+                                swal.fire(
+                                    'موفق!',
+                                    data.message,
+                                    'success'
+                                ).then(function (isConfirm) {
+                                    location.reload();
+                                });
+
+                            }
+                            else {
+                                swal.fire(
+                                    'هشدار!',
+                                    data.message,
+                                    'warning'
+                                );
+
+                            }
+                        },
+                        error: function (request, status, error) {
+                            alert(request.responseText);
+                        }
+                    });
+                }
+            });
+        }
+
+        function Edituser() {
+
+            var userId = $("#Edit_UserId").val();
+            var Username = $("#Edit_Username").val();
+            var email = $("#Edit_Email").val();
+
+            var postData = {
+                'UserId': userId,
+                'Username': Username,
+                'email': email
+            };
+
+
+            $.ajax({
+                contentType: 'application/x-www-form-urlencoded',
+                dataType: 'json',
+                type: "POST",
+                url: "Edit",
+                data: postData,
+                success: function (data) {
+                    if (data.isSuccess == true) {
+                        swal.fire(
+                            'موفق!',
+                            data.message,
+                            'success'
+                        ).then(function (isConfirm) {
+                            location.reload();
+                        });
+                    }
+                    else {
+                        swal.fire(
+                            'هشدار!',
+                            data.message,
+                            'warning'
+                        );
+                    }
+                },
+                error: function (request, status, error) {
+                    alert(request.responseText);
+                }
+            });
+
+            $('#EditUser').modal('hide');
+
+        }
+
+        function ModalEditUser(UserId, UserName, Email) {
+            $('#Edit_Username').val(UserName);
+            $('#Edit_Email').val(Email);
+            $('#Edit_UserId').val(UserId);
+            $('#EditUser').modal('show');
+        }
+    </script>
+}
+
+
+@section Modals
+{
+    <!-- Modal Edit User -->
+    <div class="modal fade" id="EditUser" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">ویرایش کاربر</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="col-xl-12 col-lg-12 col-md-12 mb-1">
+                        <fieldset class="form-group">
+                            <input type="hidden" id="Edit_UserId" />
+                            <label for="basicInput">نام و نام خانوادگی</label>
+                            <input type="text" class="form-control" id="Edit_Username">
+                            <label for="basicInput">ایمیل</label>
+                            <input type="text" class="form-control" id="Edit_Email">
+                        </fieldset>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <a class="btn btn-secondary" data-dismiss="modal">بستن</a>
+                    <a class="btn btn-primary" onclick="Edituser()">اعمال تغییرات</a>
+                </div>
+            </div>
+        </div>
+    </div>
+}

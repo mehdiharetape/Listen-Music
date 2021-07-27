@@ -1,0 +1,12 @@
+﻿@using Listen_Music.Application.Services.Common.Queries.GetMemuItems;
+@model List<GenresMemuItemDTO>;
+@{
+    Layout = null;
+}
+
+@foreach (var item in Model)
+{
+    <div class="item-container">
+        <div class="inner-items"><a href="~/Genre/Index/@item.GenreId">@item.GenreName</a></div>
+    </div>
+}

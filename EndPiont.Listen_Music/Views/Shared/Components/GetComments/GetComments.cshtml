@@ -1,0 +1,26 @@
+﻿@using Listen_Music.Application.Services.Songs.Queries.GetComments;
+@model List<ResultCommentsDTO>
+@{
+    Layout = null;
+}
+
+<div class="comments-info">
+    <h4>نظرات کاربران</h4>
+    <p id="comment-count">@Model.Count()  نظر</p>
+</div>
+@foreach (var item in Model)
+{
+    <div class="user-comment">
+        <div class="user-name">
+            <pre id="username"><i class="fa fa-user"></i> @item.UserName  </pre>
+            <p id="comment-date">@item.InsertTime.ToString("dd/MM/yyyy")</p>
+        </div>
+        <div class="user-txt">
+            <p id="comment-text">
+                @item.CommentText
+            </p>
+        </div>
+    </div>
+}
+
+

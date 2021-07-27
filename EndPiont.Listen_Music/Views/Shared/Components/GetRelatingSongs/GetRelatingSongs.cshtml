@@ -1,0 +1,12 @@
+﻿@using Listen_Music.Application.Services.Songs.Queries.GetRelatingSongs;
+@model List<ResultRelatingDTO>;
+@{
+    Layout = null;
+}
+
+@foreach (var item in Model)
+{
+    <a href="~/Song/Index/@item.Id" class="related-items" title="مرتبط">
+        @item.SongName  -  @item.SingerName
+    </a>
+}

@@ -1,0 +1,15 @@
+﻿@using Listen_Music.Application.Services.UserProfiles;
+@model UserSingerFollowDTO;
+@{
+    Layout = null;
+}
+
+
+@foreach (var item in Model.singerFollows)
+{
+    <div class="singer-link">
+        <a href="~/Singer/Index/@item.SingerId" class="singer-click">@item.SingerName</a>
+        <a href="~/Follow/RemoveSinger?SingerId=@item.SingerId" class="unfollow">حذف</a>
+    </div>
+}
+

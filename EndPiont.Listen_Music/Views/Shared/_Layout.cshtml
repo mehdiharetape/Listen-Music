@@ -1,0 +1,140 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 music player">
+    <title>Listen Music</title>
+    <link href="~/SiteTemplate/asset/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/SiteTemplate/asset/css/bootstrap-rtl.min.css" rel="stylesheet" />
+    <link href="~/SiteTemplate/asset/css/index.css" rel="stylesheet" />
+    <link href="~/SiteTemplate/asset/font/css/font-awesome.css" rel="stylesheet" />
+</head>
+<body>
+    <!-- header -->
+    <header class="header-container">
+        <nav id="menu-container">
+            <ul class="menu-bar">
+                <li class="items-menu"><a class="menu-link" href="~/Home/Index" title="صفحه اصلی"><i class="fa fa-home"></i> صفحه نخست</a></li>
+                <li class="items-menu"><a class="menu-link" href="~/Contact/Index" title="تماس با ما"><i class="fa fa-envelope"></i> تماس با ما</a></li>
+                <li class="items-menu"><a class="menu-link" href="~/About/Index" title="درباره ما"><i class="fa fa-info-circle"></i> درباره ما</a></li>
+
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <li class="items-menu">
+                        <a id="username-button" href="#">@User.Identity.Name <i class="fa fa-caret-down"></i></a><br>
+                        <div id="exit-prof-container">
+                            <a id="exit-btn" class="exit-prof-btn" href="~/Authentication/SignOut">خروج از حساب</a>
+                            <a id="profile-btn" class="exit-prof-btn" href="~/Follow/Index"> پروفایل من </a>
+                        </div>
+                    </li>
+                }
+                else
+                {
+                    <li class="items-menu">
+                        <a class="menu-link" href="~/Authentication/SignIn" title="ورود">
+                            ورود
+                        </a>
+                    </li>
+                    <li class="items-menu">
+                        <a class="menu-link" href="~/Authentication/SignUp" title="ثبت نام">
+                            ثبت نام
+                        </a>
+                    </li>
+                }
+
+            </ul>
+            <form id="search-container" asp-action="Index" asp-controller="Home" method="get">
+                <input type="text" name="searchKey" id="serach-input" placeholder="جستجو : آهنگ ، خواننده">
+                <button type="submit" class="search-click"><i class="fa fa-search search-icon"></i></button>
+            </form>
+            <div id="Cat-img">
+                <h2 class="logo"><a href="~/Home/Index" title="Listen music"><i class="fa fa-headphones"></i> Listen Music</a></h2>
+            </div>
+        </nav>
+        <section id="side-menu-container">
+            <h2>دسته بندی ها</h2>
+            <div class="singer-btn btn-item-side">
+                <h2>خواننده</h2>
+            </div>
+            <div class="genre-btn btn-item-side">
+                <h2>سبک</h2>
+            </div>
+        </section>
+        <div class="group-container">
+            @*View Component*@
+
+            <div id="leg-group1" class="legion-group">
+                @await Component.InvokeAsync("GetSingerMenuMainPage")
+            </div>
+
+            @*View Component*@
+            <div id="leg-group2" class="legion-group">
+                @await Component.InvokeAsync("GetGenreMenuMainPage")
+            </div>
+
+        </div>
+    </header>
+    <!-- end header -------------------------------->
+    <!-- main -->
+    <main id="main">
+        <article id="content-container">
+            @RenderBody()
+
+            @*View Component*@
+            <section id="playList-container">
+                <div class="header-playlist">
+                    <h3>لیست های پخش</h3>
+                </div>
+                <div class="playlists">
+                    @await Component.InvokeAsync("GetPlayListForSiteService")
+
+                </div>
+            </section>
+
+
+            @*View Component*@
+            <section id="most-Viewed-container">
+                <div class="head-mostView"><h4>پربازدید ترین ها</h4></div>
+                <div id="most-Viewed">
+
+                    @await Component.InvokeAsync("GetMostView")
+
+                </div>
+            </section>
+        </article>
+    </main>
+    <!-- end main ----------------------------------->
+    <!-- footer -->
+    <footer id="footer">
+        <nav id="footer-container">
+
+            <div class="grid-item item1" id="site-info-container">
+                <h3>اطلاعات</h3>
+                <a href="~/Contact/Index" title="contact us">تماس با ما</a>
+                <a href="~/About/Index" title="about us">درباره ما</a>
+            </div>
+
+            <div class="grid-item item2" id="social-media-container">
+                <h3>ما را دنبال کنید</h3><br>
+                <a class="iconlink" href="#" title="telegram"><i class="fa fa-telegram icon-social"></i></a>
+                <a class="iconlink" href="#" title="instagram"><i class="fa fa-instagram icon-social"></i></a>
+                <a class="iconlink" href="#" title="twitter"><i class="fa fa-twitter icon-social"></i></a>
+            </div>
+
+            <div class="grid-item item3" id="email-container">
+                <h4>ایمیل : <a href="#" title="e-mail">www.mehdigharetape97@gmail.com</a></h4>
+            </div>
+
+            <div class="grid-item item4" id="img-headphone">
+                <img src="~/SiteTemplate/asset/css/image/head_1-removebg-preview.png" alt="">
+            </div>
+
+        </nav>
+    </footer>
+    <!-- end footer --------------------------------->
+</body>
+<script src="~/SiteTemplate/asset/js/indexScripts.js"></script>
+<script src="~/SiteTemplate/asset/js/jquery-3.3.1.min.js"></script>
+</html>

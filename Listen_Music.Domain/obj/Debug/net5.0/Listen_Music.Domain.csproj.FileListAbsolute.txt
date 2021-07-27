@@ -1,0 +1,12 @@
+C:\Users\daya\source\repos\Listen_Music\Listen_Music.Domain\bin\Debug\net5.0\Listen_Music.Domain.deps.json
+C:\Users\daya\source\repos\Listen_Music\Listen_Music.Domain\bin\Debug\net5.0\Listen_Music.Domain.dll
+C:\Users\daya\source\repos\Listen_Music\Listen_Music.Domain\bin\Debug\net5.0\ref\Listen_Music.Domain.dll
+C:\Users\daya\source\repos\Listen_Music\Listen_Music.Domain\bin\Debug\net5.0\Listen_Music.Domain.pdb
+C:\Users\daya\source\repos\Listen_Music\Listen_Music.Domain\obj\Debug\net5.0\Listen_Music.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\daya\source\repos\Listen_Music\Listen_Music.Domain\obj\Debug\net5.0\Listen_Music.Domain.AssemblyInfoInputs.cache
+C:\Users\daya\source\repos\Listen_Music\Listen_Music.Domain\obj\Debug\net5.0\Listen_Music.Domain.AssemblyInfo.cs
+C:\Users\daya\source\repos\Listen_Music\Listen_Music.Domain\obj\Debug\net5.0\Listen_Music.Domain.csproj.CoreCompileInputs.cache
+C:\Users\daya\source\repos\Listen_Music\Listen_Music.Domain\obj\Debug\net5.0\Listen_Music.Domain.dll
+C:\Users\daya\source\repos\Listen_Music\Listen_Music.Domain\obj\Debug\net5.0\ref\Listen_Music.Domain.dll
+C:\Users\daya\source\repos\Listen_Music\Listen_Music.Domain\obj\Debug\net5.0\Listen_Music.Domain.pdb
+C:\Users\daya\source\repos\Listen_Music\Listen_Music.Domain\obj\Debug\net5.0\Listen_Music.Domain.csprojAssemblyReference.cache

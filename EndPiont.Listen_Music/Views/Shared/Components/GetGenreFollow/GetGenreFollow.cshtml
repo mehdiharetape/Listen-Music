@@ -1,0 +1,13 @@
+﻿@using Listen_Music.Application.Services.UserProfiles;
+@model UserGenreFollowDTO;
+@{
+    Layout = null;
+}
+
+@foreach (var item in Model.GenreFollowItems)
+{
+    <div class="genre-link">
+        <a href="~/Genre/Index/@item.GenreId" class="genre-click">@item.GenreName</a>
+        <a href="~/Follow/RemoveGenre?GenreId=@item.GenreId" class="genre-unfollow">حذف</a>
+    </div>
+}

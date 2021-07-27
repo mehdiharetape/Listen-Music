@@ -1,0 +1,53 @@
+﻿@using Listen_Music.Application.Services.Common.Queries.GetReport;
+@model ReportDTO;
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+<div id="singer-list-container" class="singer-genre-list-contaier">
+    <h1>آمار سایت</h1>
+
+    <table id="report-list" class="table-genre-singer">
+        <tr>
+            <td>تعداد کل کاربران</td>
+            <td>@Model.UserCount</td>
+        </tr>
+
+        <tr>
+            <td>تعداد کاربران ادمین</td>
+            <td>@Model.AdminUserCount</td>
+        </tr>
+
+        <tr>
+            <td>تعداد کاربران عادی</td>
+            <td>@Model.NormalUserCount</td>
+        </tr>
+
+        <tr>
+            <td>تعداد کاربران هنرمند</td>
+            <td>@Model.ArtistsCount</td>
+        </tr>
+
+        <tr>
+            <td>تعداد کل آهنگ ها</td>
+            <td>@Model.SongsCount</td>
+        </tr>
+
+        <tr>
+            <td>تعداد خوانندگان</td>
+            <td>@Model.SingersCount</td>
+        </tr>
+
+        <tr>
+            <td>تعداد سبک ها</td>
+            <td>@Model.GenresCount</td>
+        </tr>
+
+        <tr>
+            <td>تعداد لیست پخش ها</td>
+            <td>@Model.playListsCount</td>
+        </tr>
+
+    </table>
+</div>
+

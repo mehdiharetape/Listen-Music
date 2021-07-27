@@ -1,0 +1,12 @@
+﻿@using Listen_Music.Application.Services.Songs.Queries.GetPlayListForSite;
+@model List<RequestPlayListDTO>;
+@{
+    Layout = null;
+}
+
+@foreach (var item in Model)
+{
+    <div class="item-container playlist-item-container">
+        <div class="inner-items"><a href="~/PlayList/Index/@item.Id">@item.Name</a></div>
+    </div>
+}

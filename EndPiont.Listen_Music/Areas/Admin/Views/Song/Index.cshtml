@@ -1,0 +1,201 @@
+﻿@addTagHelper *, LazZiya.TagHelpers
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@using Listen_Music.Application.Services.Songs.Queries.GetSongForAdmin;
+@model SongForAdminDTO;
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div id="singer-list-container" class="singer-genre-list-contaier">
+    <h1>لیست آهنگ ها</h1>
+    <form id="singer-form-search" asp-route="~/Admin/Song/Index">
+        <input type="text" name="SearchKey" id="singer-search" class="search-entity">
+        <button type="submit" id="singer-button-search" class="btn-search">جستجو</button>
+    </form>
+    <table id="singer-list" class="table-genre-singer">
+
+        <tr class="first-row-Table">
+            <th>نام آهنگ</th>
+            <th>زمان</th>
+            <th>نام هنرمند</th>
+            <th>سبک</th>
+            <th>لیست پخش</th>
+            <th>اعمال</th>
+        </tr>
+
+
+        @foreach (var item in Model.Songs)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>@item.Duration</td>
+                <td>@item.Singer</td>
+                <td>@item.Genre</td>
+                <td>@item.PlayList</td>
+                <td>
+                    <a class="edit" onclick="ModalEditSong('@item.Id', '@item.Name', '@item.Duration')">ویرایش</a>
+                    <a class="delete" onclick="DeleteSong('@item.Id')">حذف</a>
+                </td>
+            </tr>
+        }
+
+
+
+    </table>
+    <div class="pagination">
+        <paging total-records="Model.RowCount"
+                page-no="Model.CurrentPage"
+                page-size="Model.PageSize"
+                show-prev-next="true"
+                show-total-pages="false"
+                show-total-records="false"
+                show-page-size-nav="false"
+                query-string-key-page-no="Page"
+                query-string-key-page-size="PageSize">
+        </paging>
+    </div>
+</div>
+
+@section Scripts{
+    <link href="~/Sweetalert2/sweetalert2.min.css" rel="stylesheet" />
+    <script src="~/Sweetalert2/sweetalert2.min.js"></script>
+
+    <script>
+        function DeleteSong(Id) {
+            swal.fire({
+                title: ' حذف آهنگ',
+                text: "آیا میخواهید آهنگ را حذف کنید؟",
+                icon: 'info',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'بله آهنگ حذف شود',
+                cancelButtonText: 'خیر'
+            }).then((result) => {
+                if (result.value) {
+                    var postData = {
+                        'Id': Id
+                    };
+                    $.ajax({
+                        contentType: 'application/x-www-form-urlencoded',
+                        dataType: 'json',
+                        type: "POST",
+                        url: "Delete",
+                        data: postData,
+                        success: function (data) {
+                            if (data.isSuccess == true) {
+                                swal.fire(
+                                    'موفق!',
+                                    data.message,
+                                    'success'
+                                ).then(function (isConfirm) {
+                                    location.reload();
+                                });
+
+                            }
+                            else {
+                                swal.fire(
+                                    'هشدار!',
+                                    data.message,
+                                    'warning'
+                                );
+
+                            }
+                        },
+                        error: function (request, status, error) {
+                            alert(request.responseText);
+                        }
+                    });
+                }
+            });
+        }
+
+        function Editsong() {
+            var Id = $('#Edit_songId').val();
+            var Name = $('#Edit_songName').val();
+            var Duration = $('#Edit_songDuration').val();
+
+            var postData = {
+                'Id': Id,
+                'Name': Name,
+                'Duration': Duration
+            };
+
+
+            $.ajax({
+                contentType: 'application/x-www-form-urlencoded',
+                dataType: 'json',
+                type: "POST",
+                url: "Edit",
+                data: postData,
+                success: function (data) {
+                    if (data.isSuccess == true) {
+                        swal.fire(
+                            'موفق!',
+                            data.message,
+                            'success'
+                        ).then(function (isConfirm) {
+                            location.reload();
+                        });
+                    }
+                    else {
+                        swal.fire(
+                            'هشدار!',
+                            data.message,
+                            'warning'
+                        );
+                    }
+                },
+
+                error: function (request, status, error) {
+                    alert(request.responseText);
+                }
+            });
+
+            $('#EditSong').modal('hide');
+        }
+
+
+        function ModalEditSong(Id, Name, Duration) {
+            $('#Edit_songId').val(Id);
+            $('#Edit_songName').val(Name);
+            $('#Edit_songDuration').val(Duration);
+
+            $('#EditSong').modal('show');
+        }
+
+    </script>
+}
+
+@section Modals
+{
+    <div class="modal fade" id="EditSong" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">ویرایش  هنرمند</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="col-xl-12 col-lg-12 col-md-12 mb-1">
+                        <fieldset class="form-group">
+                            <input type="hidden" id="Edit_songId" />
+                            <label for="basicInput">نام  آهنگ</label>
+                            <input type="text" class="form-control" id="Edit_songName">
+                            <label for="basicInput">آهنگ</label>
+                            <input type="text" class="form-control" id="Edit_songDuration">
+                        </fieldset>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <a class="btn btn-secondary" data-dismiss="modal">بستن</a>
+                    <a class="btn btn-primary" onclick="Editsong()">اعمال تغییرات</a>
+                </div>
+            </div>
+        </div>
+    </div>
+}

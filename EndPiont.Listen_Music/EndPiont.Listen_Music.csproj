@@ -1,0 +1,72 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="LazZiya.ExpressLocalization" Version="5.0.0-beta2" />
+    <PackageReference Include="LazZiya.TagHelpers" Version="1.0.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.4">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.4" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Areas\Admin\Data\" />
+    <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="wwwroot\SiteTemplate\asset\css\music\" />
+    <Folder Include="wwwroot\SongFiles\Images\" />
+    <Folder Include="wwwroot\SongFiles\Songs\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\SiteTemplate\asset\font\fonts\fontawesome-webfont.svg" />
+    <None Include="wwwroot\SiteTemplate\asset\font\fonts\fontawesome-webfont.woff2" />
+    <None Include="wwwroot\SiteTemplate\asset\font\less\animated.less" />
+    <None Include="wwwroot\SiteTemplate\asset\font\less\bordered-pulled.less" />
+    <None Include="wwwroot\SiteTemplate\asset\font\less\core.less" />
+    <None Include="wwwroot\SiteTemplate\asset\font\less\fixed-width.less" />
+    <None Include="wwwroot\SiteTemplate\asset\font\less\font-awesome.less" />
+    <None Include="wwwroot\SiteTemplate\asset\font\less\icons.less" />
+    <None Include="wwwroot\SiteTemplate\asset\font\less\larger.less" />
+    <None Include="wwwroot\SiteTemplate\asset\font\less\list.less" />
+    <None Include="wwwroot\SiteTemplate\asset\font\less\mixins.less" />
+    <None Include="wwwroot\SiteTemplate\asset\font\less\path.less" />
+    <None Include="wwwroot\SiteTemplate\asset\font\less\rotated-flipped.less" />
+    <None Include="wwwroot\SiteTemplate\asset\font\less\screen-reader.less" />
+    <None Include="wwwroot\SiteTemplate\asset\font\less\stacked.less" />
+    <None Include="wwwroot\SiteTemplate\asset\font\less\variables.less" />
+    <None Include="wwwroot\SiteTemplate\asset\font\scss\font-awesome.scss" />
+    <None Include="wwwroot\SiteTemplate\asset\font\scss\_animated.scss" />
+    <None Include="wwwroot\SiteTemplate\asset\font\scss\_bordered-pulled.scss" />
+    <None Include="wwwroot\SiteTemplate\asset\font\scss\_core.scss" />
+    <None Include="wwwroot\SiteTemplate\asset\font\scss\_fixed-width.scss" />
+    <None Include="wwwroot\SiteTemplate\asset\font\scss\_icons.scss" />
+    <None Include="wwwroot\SiteTemplate\asset\font\scss\_larger.scss" />
+    <None Include="wwwroot\SiteTemplate\asset\font\scss\_list.scss" />
+    <None Include="wwwroot\SiteTemplate\asset\font\scss\_mixins.scss" />
+    <None Include="wwwroot\SiteTemplate\asset\font\scss\_path.scss" />
+    <None Include="wwwroot\SiteTemplate\asset\font\scss\_rotated-flipped.scss" />
+    <None Include="wwwroot\SiteTemplate\asset\font\scss\_screen-reader.scss" />
+    <None Include="wwwroot\SiteTemplate\asset\font\scss\_stacked.scss" />
+    <None Include="wwwroot\SiteTemplate\asset\font\scss\_variables.scss" />
+    <None Include="wwwroot\SiteTemplate\asset\js\AboutUs.js" />
+    <None Include="wwwroot\SiteTemplate\asset\js\AdminPanel.js" />
+    <None Include="wwwroot\SiteTemplate\asset\js\CategoryDetail.js" />
+    <None Include="wwwroot\SiteTemplate\asset\js\ContactUs.js" />
+    <None Include="wwwroot\SiteTemplate\asset\js\indexScripts.js" />
+    <None Include="wwwroot\SiteTemplate\asset\js\login.js" />
+    <None Include="wwwroot\SiteTemplate\asset\js\MusicDetailScripts.js" />
+    <None Include="wwwroot\SiteTemplate\asset\js\sugnup.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Listen_Music.Persistance\Listen_Music.Persistance.csproj" />
+  </ItemGroup>
+
+</Project>

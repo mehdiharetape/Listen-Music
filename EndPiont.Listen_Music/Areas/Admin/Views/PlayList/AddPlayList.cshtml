@@ -1,0 +1,77 @@
+﻿
+@{
+    ViewData["Title"] = "AddPlayList";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div id="playlist-add" class="genre-singer-add">
+    <h1>افزودن لیست پخش </h1>
+    <form action="" id="add-form-playlist" class="genre-singer-form">
+        <input type="text" id="txt-playlist" class="genre-singer-tex">
+        <a onclick="AddPlayListBtn()" class="add-playlist-btn genre-singer-btn">افزودن</a>
+    </form>
+</div>
+
+@section Scripts{
+    <link href="~/Sweetalert2/sweetalert2.min.css" rel="stylesheet" />
+    <script src="~/Sweetalert2/sweetalert2.min.js"></script>
+     
+    <script>
+        function AddPlayListBtn() {
+            swal.fire({
+                title: 'دسته بندی جدید',
+                text: "آیا میخواهید سبک بندی جدید به لیست  سبک ها اضافه شود؟",
+                icon: 'info',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'بله، اضافه شود',
+                cancelButtonText: 'خیر'
+            }).then((result) => {
+                if (result.value) {
+
+                    var Name = $("#txt-playlist").val();
+                    var postData = {
+                        'Name': Name,
+                    };
+
+                    $.ajax({
+                        contentType: 'application/x-www-form-urlencoded',
+                        dataType: 'json',
+                        type: "POST",
+                        url: "AddPlayList",
+                        data: postData,
+                        success: function (data) {
+                            if (data.isSuccess == true) {
+                                swal.fire(
+                                    'موفق!',
+                                    data.message,
+                                    'success'
+                                ).then(function (isConfirm) {
+                                    location.reload();
+                                });
+                            }
+                            else {
+
+                                swal.fire(
+                                    'هشدار!',
+                                    data.message,
+                                    'warning'
+                                );
+
+                            }
+                        },
+                        error: function (request, status, error) {
+                            swal.fire(
+                                'هشدار!',
+                                request.responseText,
+                                'warning'
+                            );
+                        }
+
+                    });
+                }
+            })
+        }
+    </script>
+}

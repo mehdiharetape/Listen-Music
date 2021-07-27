@@ -1,0 +1,14 @@
+﻿@using Listen_Music.Application.Services.Common.Queries.GetMemuItems;
+@model List<SingersMemuItemDTO>;
+@{
+    Layout = null;
+}
+
+@foreach (var item in Model)
+{
+    <div class="group-header">
+        <a href="~/Singer/Index/@item.SingerId" class="items">@item.singerName</a>
+    </div>
+}
+
+

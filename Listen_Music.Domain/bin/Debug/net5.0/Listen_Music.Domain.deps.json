@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v5.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v5.0": {
+      "Listen_Music.Domain/1.0.0": {
+        "runtime": {
+          "Listen_Music.Domain.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Listen_Music.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

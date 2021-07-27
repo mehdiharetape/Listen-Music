@@ -1,0 +1,80 @@
+﻿
+@{
+    ViewData["Title"] = "ورود";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link href="~/SiteTemplate/asset/css/login.css" rel="stylesheet" />
+</head>
+<body>
+    <main id="main">
+        <section id="signup-continer">
+            <form class="parent">
+                <p class="title">ورود به Listen Music</p>
+
+                <input id="email" type="email" placeholder="ایمیل"><br>
+                <input id="password" type="password" placeholder="رمز عبور"><br>
+
+                <a id="signup-btn" onclick="UserLogin()">ورود</a>
+
+            </form>
+        </section>
+    </main>
+</body>
+<link href="~/Sweetalert2/sweetalert2.min.css" rel="stylesheet" />
+<script src="~/Sweetalert2/sweetalert2.min.js"></script>
+<script src="~/SiteTemplate/asset/js/jquery-3.3.1.min.js"></script>
+</html>
+
+<script>
+    function UserLogin() {
+        var email = $("#email").val();
+        var password = $("#password").val();
+
+        var postData = {
+            'email': email,
+            'password': password
+        }
+
+        $.ajax({
+            contentType: 'application/x-www-form-urlencoded',
+            dataType: 'json',
+            type: "POST",
+            url: "SignIn",
+            data: postData,
+            success: function (data) {
+                if (data.isSuccess == true) {
+                    swal.fire(
+                        'موفق!',
+                        data.message,
+                        'success'
+                    ).then(function (isConfirm) {
+                        window.location.replace("/");
+                    });
+                }
+                else {
+
+                    swal.fire(
+                        'هشدار!',
+                        data.message,
+                        'warning'
+                    );
+                }
+            },
+            error: function (request, status, error) {
+                swal.fire(
+                    'هشدار!',
+                    request.responseText,
+                    'warning'
+                );
+            }
+        });
+    }
+</script>

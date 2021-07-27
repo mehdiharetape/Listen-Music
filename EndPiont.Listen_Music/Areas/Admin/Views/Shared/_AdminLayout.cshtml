@@ -1,0 +1,104 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listen Music Admin Panel</title>
+    <link href="~/AdminTemplate/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/AdminTemplate/css/bootstrap-rtl.min.css" rel="stylesheet" />
+    <link href="~/AdminTemplate/css/AdminPanel.css" rel="stylesheet" />
+    <link href="~/AdminTemplate/font/css/font-awesome.css" rel="stylesheet" />
+</head>
+<body>
+
+    <header id="header">
+        <nav id="nav">
+            <div class="admin-info">
+                <img src="~/AdminTemplate/css/image/1.jpg" alt="">
+                <p id="admin-name"> صفحه مدیریت -</p>
+                <p id="exit"><a href="/">خروج</a></p>
+            </div>
+            <h3 class="logo"><a href="#" title="Listen music"><i class="fa fa-headphones"></i> Listen Music</a></h3>
+        </nav>
+    </header>
+
+    <main id="main">
+        <aside id="aside">
+
+            <div class="category-singer category">
+                <h4 class="cat-header">هنرمندان</h4>
+                <div class="btn-container">
+                    <a href="~/Admin/Singer/AddSinger" id="add-singer-btn" class="design-btn">افزودن هنرمند</a>
+                    <a href="~/Admin/Singer/Index" id="list-singer-btn" class="design-btn">لیست هنرمندان</a>
+                </div>
+            </div>
+
+            <div class="category-genre category">
+                <h4 class="cat-header">سبک</h4>
+                <div class="btn-container">
+                    <a href="~/Admin/Genre/AddGenre" id="add-genre-btn" class="design-btn">افزودن سبک</a>
+                    <a href="~/Admin/Genre/Index" id="list-genre-btn" class="design-btn">لیست سبک ها</a>
+                </div>
+            </div>
+
+
+            <div class="songs-category category">
+                <h4 class="cat-header">آهنگ ها</h4>
+                <div class="btn-container">
+                    <a href="~/Admin/Song/AddNewSong" id="add-song-btn" class="design-btn">افزودن آهنگ</a>
+                    <a href="~/Admin/Song/Index" id="list-song-btn" class="design-btn">لیست آهنگ ها</a>
+                </div>
+            </div>
+
+            <div class="playlist-category category">
+                <h4 class="cat-header">لیست های پخش</h4>
+                <div class="btn-container">
+                    <a href="~/Admin/PlayList/AddPlayList" id="add-playlist-btn" class="design-btn">افزودن لیست پخش</a>
+                    <a href="~/Admin/PlayList/Index" id="list-playlist-btn" class="design-btn">لیست ها </a>
+                </div>
+            </div>
+
+            <div class="users-category category">
+                <h4 class="cat-header">کاربران</h4>
+                <div class="btn-container">
+                    <a href="~/Admin/user/Create" id="add-user-btn" class="design-btn">افزودن کاربر</a>
+                    <a href="~/Admin/user/Index" id="list-user-btn" class="design-btn">لیست کاربران</a>
+                </div>
+            </div>
+
+            <div class="comment-category category">
+                <h4 class="cat-header">نظرات</h4>
+                <div class="btn-container">
+                    <a href="~/Admin/Comment/Index" id="list-user-btn" class="design-btn">لیست نظرات</a>
+                </div>
+            </div>
+
+
+            <div class="comment-category category">
+                <h4 class="cat-header">آمار</h4>
+                <div class="btn-container">
+                    <a href="~/Admin/Report/Index" id="list-user-btn" class="design-btn">آمار سایت</a>
+                </div>
+            </div>
+        </aside>
+
+        <section id="main-container">
+            @RenderBody()
+        </section>
+    </main>
+    <script src="~/AdminTemplate/js/AdminPanel.js"></script>
+    <script src="~/AdminTemplate/js/jquery-3.3.1.min.js"></script>
+    <script src="~/AdminTemplate/js/bootstrap.js"></script>
+    <script src="~/AdminTemplate/js/bootstrap.min.js"></script>
+    @RenderSection("Scripts", false)
+    @RenderSection("Modals", false)
+</body>
+
+
+</html>

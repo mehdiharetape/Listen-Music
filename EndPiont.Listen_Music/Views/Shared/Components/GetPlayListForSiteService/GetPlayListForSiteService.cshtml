@@ -1,0 +1,30 @@
+﻿@using Listen_Music.Application.Services.Songs.Queries.GetPlayListForSite;
+@model List<RequestPlayListDTO>;
+@{
+    Layout = null;
+    int i = 0;
+}
+
+@foreach (var item in Model)
+{
+    @if (i % 2 == 0)
+    {
+        <a href="~/PlayList/Index/@item.Id" class="playlist-item list-1" title="@item.Name">
+            <div id="playlist-slow-info" class="playlist-info">
+                <h3 class="list-names">@item.Name</h3>
+            </div>
+            <img src="~/SiteTemplate/asset/css/image/head-4.jpg" alt="">
+        </a>
+    }
+    else
+    {
+        <a href="~/PlayList/Index/@item.Id" class="playlist-item list-1" title="@item.Name">
+            <div id="playlist-slow-info" class="playlist-info">
+                <h3 class="list-names">@item.Name</h3>
+            </div>
+            <img src="~/SiteTemplate/asset/css/image/dj-1.jpg" alt="">
+        </a>
+    }
+    i++;
+}
+

@@ -1,0 +1,13 @@
+﻿@using Listen_Music.Application.Services.UserProfiles;
+@model UserPlayListFollowDTO;
+@{
+    Layout = null;
+}
+
+@foreach (var item in Model.playListFollowItems)
+{
+    <div class="playlist-link">
+        <a href="~/PlayList/Index/@item.PlayListid" class="playlist-click">@item.PlayListName</a>
+        <a href="~/Follow/RemovePlayList?PlayListId=@item.PlayListid" class="plsylist-unfollow">حذف</a>
+    </div>
+}

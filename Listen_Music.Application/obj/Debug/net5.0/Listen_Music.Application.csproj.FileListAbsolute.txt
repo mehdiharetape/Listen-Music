@@ -1,0 +1,17 @@
+C:\Users\daya\source\repos\Listen_Music\Listen_Music.Application\bin\Debug\net5.0\Listen_Music.Application.deps.json
+C:\Users\daya\source\repos\Listen_Music\Listen_Music.Application\bin\Debug\net5.0\Listen_Music.Application.dll
+C:\Users\daya\source\repos\Listen_Music\Listen_Music.Application\bin\Debug\net5.0\ref\Listen_Music.Application.dll
+C:\Users\daya\source\repos\Listen_Music\Listen_Music.Application\bin\Debug\net5.0\Listen_Music.Application.pdb
+C:\Users\daya\source\repos\Listen_Music\Listen_Music.Application\bin\Debug\net5.0\Listen_Music.Domain.dll
+C:\Users\daya\source\repos\Listen_Music\Listen_Music.Application\bin\Debug\net5.0\Listen_Music.Domain.pdb
+C:\Users\daya\source\repos\Listen_Music\Listen_Music.Application\obj\Debug\net5.0\Listen_Music.Application.csprojAssemblyReference.cache
+C:\Users\daya\source\repos\Listen_Music\Listen_Music.Application\obj\Debug\net5.0\Listen_Music.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\daya\source\repos\Listen_Music\Listen_Music.Application\obj\Debug\net5.0\Listen_Music.Application.AssemblyInfoInputs.cache
+C:\Users\daya\source\repos\Listen_Music\Listen_Music.Application\obj\Debug\net5.0\Listen_Music.Application.AssemblyInfo.cs
+C:\Users\daya\source\repos\Listen_Music\Listen_Music.Application\obj\Debug\net5.0\Listen_Music.Application.csproj.CoreCompileInputs.cache
+C:\Users\daya\source\repos\Listen_Music\Listen_Music.Application\obj\Debug\net5.0\Listen_Music.Application.csproj.CopyComplete
+C:\Users\daya\source\repos\Listen_Music\Listen_Music.Application\obj\Debug\net5.0\Listen_Music.Application.dll
+C:\Users\daya\source\repos\Listen_Music\Listen_Music.Application\obj\Debug\net5.0\ref\Listen_Music.Application.dll
+C:\Users\daya\source\repos\Listen_Music\Listen_Music.Application\obj\Debug\net5.0\Listen_Music.Application.pdb
+C:\Users\daya\source\repos\Listen_Music\Listen_Music.Application\bin\Debug\net5.0\Listen_Music.Common.dll
+C:\Users\daya\source\repos\Listen_Music\Listen_Music.Application\bin\Debug\net5.0\Listen_Music.Common.pdb
